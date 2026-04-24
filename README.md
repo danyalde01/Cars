@@ -39,6 +39,12 @@ Das Projekt umfasst unter anderem:
 - Git & GitHub
 - IntelliJ IDEA
 
+
+## 🧩 UML-Diagramm
+
+![Cars UML](./cars-uml.png)
+
+
 ## 📂 Projektstruktur
 
 ```text
