@@ -4,12 +4,19 @@ Ein Java-Projekt zur Umsetzung einer Fahrzeugklassenhierarchie mit Vererbung, Po
 
 ## 📌 Beschreibung
 
-Dieses Projekt modelliert verschiedene Fahrzeugtypen mit objektorientierter Programmierung in Java.  
-Im Mittelpunkt stehen abstrakte Klassen, Vererbung, Interfaces und Komposition.
+Dieses Projekt modelliert verschiedene Fahrzeugtypen mit objektorientierter Programmierung in Java.
+
+Im Mittelpunkt stehen:
+
+- Vererbung
+- abstrakte Klassen
+- Interfaces
+- Polymorphismus
+- Komposition
 
 ## 🧱 Klassen und Interfaces
 
-- `Vehicle` – abstrakte Basisklasse für alle Fahrzeuge
+- `Vehicle` – abstrakte Basisklasse für Fahrzeuge
 - `Car` – abstrakte Klasse für Autos
 - `FuelCar` – abstrakte Klasse für Fahrzeuge mit Tank
 - `DieselCar` – konkrete Unterklasse von `FuelCar`
@@ -28,6 +35,10 @@ Im Mittelpunkt stehen abstrakte Klassen, Vererbung, Interfaces und Komposition.
 - GitHub
 - IntelliJ IDEA
 
+## 🧩 UML-Diagramm
+
+![Cars UML](./CarUML.png)
+
 ## 📂 Projektstruktur
 
 ```text
@@ -44,6 +55,6 @@ Cars/
 │     ├─ TaxiCar.java
 │     └─ Traffic.java
 ├─ README.md
-├─ CarsUML.puml
 ├─ CarsUML.png
+├─ CarsUML.puml
 └─ .gitignore
