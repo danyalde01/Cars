@@ -1,0 +1,105 @@
+@startuml
+title Cars UML
+
+top to bottom direction
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam nodesep 50
+skinparam ranksep 60
+
+interface Drivable {
+    + drive(kilometers: double): void
+    + canDrive(kilometers: double): boolean
+}
+
+interface TaxiService {
+    + startFare(): void
+    + stopFare(): void
+    + calculateLastFare(): double
+    + isFareRunning(): boolean
+}
+
+abstract class Vehicle {
+    - amountWheels: int
+    - mileageKm: double
+    + Vehicle(amountWheels: int)
+    + getMileageKm(): double
+    + getAmountWheels(): int
+    # addMileage(kilometers: double): void
+}
+
+abstract class Car {
+    - seats: int
+    + Car(seats: int)
+    + getSeats(): int
+}
+
+abstract class FuelCar {
+    - fuelLevel: double
+    - fuelCapacity: double
+    - fuelConsumptionPerKm: double
+    + FuelCar(seats: int, fuelCapacity: double, fuelConsumptionPerKm: double)
+    + refuel(amount: double): void
+    + canDrive(kilometers: double): boolean
+    + drive(kilometers: double): void
+    + getFuelLevel(): double
+    + getFuelCapacity(): double
+    + getFuelConsumptionPerKm(): double
+}
+
+class DieselCar {
+    + DieselCar(seats: int, fuelCapacity: double, fuelConsumptionPerKm: double)
+}
+
+class ElectricCar {
+    - batteryLevel: double
+    - batteryCapacity: double
+    - consumptionPerKm: double
+    + ElectricCar(seats: int, batteryCapacity: double, consumptionPerKm: double)
+    + recharge(amount: double): void
+    + canDrive(kilometers: double): boolean
+    + drive(kilometers: double): void
+    + getBatteryLevel(): double
+    + getBatteryCapacity(): double
+    + getConsumptionPerKm(): double
+}
+
+class TaxiCar {
+    - fareRunning: boolean
+    - farePerKm: double
+    - startMileage: double
+    - endMileage: double
+    - basedOn: Car
+    + TaxiCar(basedOn: Car, farePerKm: double)
+    + canDrive(kilometers: double): boolean
+    + drive(kilometers: double): void
+    + startFare(): void
+    + stopFare(): void
+    + calculateLastFare(): double
+    + isFareRunning(): boolean
+    + getBasedOn(): Car
+    + getFarePerKm(): double
+    + getStartMileage(): double
+    + getEndMileage(): double
+}
+
+Vehicle ..|> Drivable
+TaxiCar ..|> Drivable
+TaxiCar ..|> TaxiService
+
+Vehicle <|-- Car
+Car <|-- FuelCar
+Car <|-- ElectricCar
+FuelCar <|-- DieselCar
+
+TaxiCar --> Car : basedOn
+
+' Layout-Hilfe
+ElectricCar -[hidden]left- FuelCar
+FuelCar -[hidden]down- DieselCar
+TaxiCar -[hidden]right- Car
+Drivable -[hidden]down- TaxiService
+
+@enduml
